@@ -1,0 +1,153 @@
+#include <math.h>
+#include <iostream>
+#include <stdio.h>
+#include <string.h>
+using namespace std;//librerias
+
+int main()
+{
+    system("color 0f");
+    int palsel,fin=0,letdes=0,errores=0,detector=0;
+    bool dec1,des;
+    
+    string palabra[5], letraintroducida,descubierta[5];
+    string mensajefinal;
+    srand(time(NULL));
+    palsel = rand() % (6-1);//generacion de la palabra aleatoria
+    cout << "¿quieres jugar ahorcados?(1 si)(0 no)" << endl;//decicion de inicio
+    cin >> dec1;
+    for (int i = 0; i < 5; i++)
+    {
+        descubierta[i] = "_";
+    }
+    if (dec1) {
+        system("cls");
+        system("color 0a");
+        if (palsel == 1) {//relleno de variables para la palabra
+            palabra[0] = "p";
+            palabra[1] = "a";
+            palabra[2] = "t";
+            palabra[3] = "i";
+            palabra[4] = "n";
+        }
+        if (palsel == 2) {
+            palabra[0] = "a";
+            palabra[1] = "r";
+            palabra[2] = "b";
+            palabra[3] = "o";
+            palabra[4] = "l";
+        }
+        if (palsel == 3) {
+            palabra[0] = "p";
+            palabra[1] = "e";
+            palabra[2] = "r";
+            palabra[3] = "r";
+            palabra[4] = "o";
+        }
+        if (palsel == 4) {
+            palabra[0] = "b";
+            palabra[1] = "o";
+            palabra[2] = "m";
+            palabra[3] = "b";
+            palabra[4] = "a";
+        }
+        if (palsel == 5) {
+            palabra[0] = "b";
+            palabra[1] = "a";
+            palabra[2] = "m";
+            palabra[3] = "b";
+            palabra[4] = "u";
+        }
+        if (palsel == 0) {
+            palabra[0] = "e";
+            palabra[1] = "r";
+            palabra[2] = "r";
+            palabra[3] = "o";
+            palabra[4] = "r";
+        }
+        for (int i = 0; fin == 0; i++)
+        {
+            system("cls");
+            detector = 0;
+            cout << "[" << descubierta[0] << "]" << "[" << descubierta[1] << "]" << "[" << descubierta[2] << "]" << "[" << descubierta[3] << "]" << "[" << descubierta[4] << "]" << endl;
+            cout << "introduce una letra de una palabra de 5 letras(sin espacios ni mayusculas) (turno " << i <<") (error/es " <<errores<<")" << endl;
+            cin >> letraintroducida;
+                if (letraintroducida == palabra[0]) {
+                    descubierta[0] = letraintroducida;
+                    letdes = letdes + 1;
+                    detector = 1;
+                }
+                if (letraintroducida == palabra[1]) {
+                    descubierta[1] = letraintroducida;
+                    letdes = letdes + 1;
+                    detector = 1;
+                }
+                if (letraintroducida == palabra[2]) {
+                    descubierta[2] = letraintroducida;
+                    letdes = letdes + 1;
+                    detector = 1;
+                }
+                if (letraintroducida == palabra[3]) {
+                    descubierta[3] = letraintroducida;
+                    letdes = letdes + 1;
+                    detector = 1;
+                }
+                if (letraintroducida == palabra[4]) {
+                    descubierta[4] = letraintroducida;
+                    letdes = letdes + 1;
+                    detector = 1;
+                }
+                if (detector == 0) {
+                    errores = errores + 1;
+                }
+                if (letdes == 5) {
+                    system("cls");
+                    fin = 1;
+                }
+                if (errores == 6) {
+                    system("cls");
+                    fin = 2;
+                }
+
+
+        }
+        if (fin == 1) {
+            cout << "[" << palabra[0] << "]" << "[" << palabra[1] << "]" << "[" << palabra[2] << "]" << "[" << palabra[3] << "]" << "[" << palabra[4] << "]" << endl;//inpresion de la palabra en caso de que ganes 
+            cout << "lograste adivinar la palabra" << endl;
+        }
+        if (fin == 2) {
+            cout << "perdiste, la palabra era " << endl;
+            cout << "[" << palabra[0] << "]" << "[" << palabra[1] << "]" << "[" << palabra[2] << "]" << "[" << palabra[3] << "]" << "[" << palabra[4] << "]" << endl;
+        }
+        if (palsel == 0) {
+            cout << "[" << palabra[0] << "]" << "[" << palabra[1] << "]" << "[" << palabra[2] << "]" << "[" << palabra[3] << "]" << "[" << palabra[4] << "]" << endl;//inpresion de la palabra en caso de que ganes 
+            cout << "este mensaje no deveria salir" << endl;
+        }
+
+    }
+    else {
+        system("color 1f");
+        system("cls");
+        if (palsel == 1) {//mensajes en caso de que no se quiera jugar
+            mensajefinal = "¿entonces para que abriste esto?";
+        }
+        if (palsel == 2) {
+            mensajefinal = "que te vaya bien";
+        }
+        if (palsel == 3) {
+            mensajefinal = "a";
+        }
+        if (palsel == 4) {
+            mensajefinal = "¿ok?";
+        }
+        if (palsel == 5) {
+            mensajefinal = "supongo que no te puedo obligar";
+        }
+        if (palsel == 0) {
+            mensajefinal = "no pos error we";
+        }
+        cout << mensajefinal << endl;//impresion de mensajes de despedida
+        return 0;
+
+    }
+}
